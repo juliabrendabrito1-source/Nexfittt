@@ -1,0 +1,1573 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NexFit</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto:wght@300;400;500&family=Lobster&display=swap" rel="stylesheet">
+
+  <style>
+
+    body {
+      font-family: Copperplate, Papyrus, fantasy;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      margin-top: 40px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    header {
+      background-color: #DCDCDC;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #FF69B4;
+      color: #fff;
+      padding: 8px 20px;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    nav {
+      background-color: #DCDCDC;
+      text-align: center;
+      padding: 10px 0;
+      font-family: 'Lobster', cursive;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      color: #FF69B4;
+    }
+
+    /* PRODUTOS */
+
+    #produtos {
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #produtos h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .produtos-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 25px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .produto {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .produto img {
+      width: 100%;
+      max-width: 300px;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .produto p:first-of-type {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 12px 0 6px;
+    }
+
+    .produto p:last-of-type {
+      font-size: 15px;
+      font-weight: normal;
+      margin: 0 0 15px;
+    }
+
+    .opcoes {
+      margin-top: 15px;
+      text-align: left;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .opcoes label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 10px 0 5px;
+    }
+
+    .opcoes select,
+    .opcoes input {
+      width: 100%;
+      padding: 9px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: white;
+      box-sizing: border-box;
+    }
+
+    .quantidade {
+      margin-top: 15px;
+    }
+
+    .quantidade h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .numero {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 22px;
+      margin: 10px;
+    }
+
+    .produto button {
+      border: none;
+      background-color: #FF69B4;
+      color: white;
+      padding: 8px 12px;
+      margin: 3px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .produto button:hover {
+      background-color: #ff3d9b;
+    }
+
+    .produto .confirmar {
+      width: 90%;
+      margin-top: 8px;
+      background-color: #222;
+    }
+
+    .produto .confirmar:hover {
+      background-color: #444;
+    }
+
+    .resultado-produto {
+      display: none;
+      background-color: #f5f5f5;
+      border: 2px solid #FF69B4;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px auto 0;
+      max-width: 300px;
+      text-align: left;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    .resultado-produto strong {
+      font-size: 16px;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #DCDCDC;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    h2, h3 {
+      color: #222;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    footer {
+      background-color: #FF69B4;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-family: 'Lobster', cursive;
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+
+      .produtos-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .produtos-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        margin: 0 5px;
+        font-size: 15px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header id="inicio">
+
+    <br><br>
+
+    <img
+      src="https://i.imgur.com/Mo70ElZ.jpeg"
+      alt="NexFit"
+      width="900"
+      style="max-width: 100%; height: auto;"
+    >
+
+    <div class="top-bar">
+
+      📞 (31) 98015-6299 |
+      📧 NexFit@gmail.com |
+      📍 Santa Luzia - MG
+
+      <br><br>
+
+      <nav>
+
+        <a href="#inicio">Início</a> |
+        <a href="#promocoes">Promoções</a> |
+        <a href="#produtos">Produtos</a> |
+        <a href="#contato">Contato</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <section id="promocoes">
+
+    <img
+      src="https://i.imgur.com/iPJZ7cu.jpeg"
+      alt="Promoções"
+      width="1000"
+      style="max-width: 100%; height: auto;"
+    >
+
+  </section>
+
+
+  <section id="produtos">
+
+    <h1>Produtos</h1>
+
+    <div class="produtos-container">
+
+
+    
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/LEGDAY.jpg?v=1765049160&width=720"
+          alt="Oversized Leg Day"
+        >
+
+        <p>Oversized - Leg Day</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input
+            type="text"
+            class="nome"
+            placeholder="Digite seu nome"
+          >
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Azul">Azul</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Cinza">Cinza</option>
+
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/CAMISETA-OVERSIZED-BERZERK-OLYMPIA-COSTAS.jpg?v=1789001717&width=720"
+          alt="Oversized Zeus"
+        >
+
+        <p>Oversized - Zeus</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Azul">Azul</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Cinza">Cinza</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/hk1.jpg?v=1788525718&width=720"
+          alt="Jersey Hello Kitty"
+        >
+
+        <p>Jersey Oversized - Hello Kitty</p>
+        <p>R$ 139,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Vermelho">Vermelho</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/kuromi1.jpg?v=1788525735&width=720"
+          alt="Jersey Kuromi"
+        >
+
+        <p>Jersey Oversized - Kuromi</p>
+        <p>R$ 139,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Roxo">Roxo</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/WhatsAppImage2026-02-03at10.57.04.jpg?v=1770303448&width=720"
+          alt="Dragon Biceps"
+        >
+
+        <p>Oversized - Dragon Biceps</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Azul">Azul</option>
+            <option value="Cinza">Cinza</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+     
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/sailor_costas.jpg?v=1779212325&width=720"
+          alt="Boom"
+        >
+
+        <p>Oversized - Boom</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Azul">Azul</option>
+            <option value="Rosa">Rosa</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/1781553931552-dllvbg.png?v=1781553945&width=720"
+          alt="Kawaii"
+        >
+
+        <p>Oversized - Kawaii</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Azul">Azul</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/Kitsunecostas.jpg?v=1786467574&width=720"
+          alt="Kitsune"
+        >
+
+        <p>Oversized - Kitsune</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Azul">Azul</option>
+            <option value="Cinza">Cinza</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/GueixaJP.jpg?v=1787140126&width=720"
+          alt="Gueixa"
+        >
+
+        <p>Oversized - Gueixa</p>
+        <p>R$ 89,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Vermelho">Vermelho</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+    
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/f5253e2a-9d7c-4203-a69a-c0c7f7a43a9b.png?v=1784039489&width=330"
+          alt="Regata Preta"
+        >
+
+        <p>Regata Canelada - Preta</p>
+        <p>R$ 49,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+     
+
+      <div class="produto">
+
+        <img
+          src="https://berzerk.com.br/cdn/shop/files/72791d05-f43c-458a-a712-0798d3fc432f.png?v=1784039509&width=330"
+          alt="Regata Branca"
+        >
+
+        <p>Regata Canelada - Branca</p>
+        <p>R$ 49,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Branco">Branco</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      
+
+      <div class="produto">
+
+        <img
+          src="https://vivayoha.com.br/cdn/shop/files/IMG_5618.jpg?v=1771713493&width=400"
+          alt="Regata Yoha"
+        >
+
+        <p>Regata Yoha</p>
+        <p>R$ 79,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      
+      <div class="produto">
+
+        <img
+          src="https://vivayoha.com.br/cdn/shop/files/WhatsAppImage2025-11-26at10.10.28-2.jpg?v=1764162829&width=400"
+          alt="Macacão Yoha"
+        >
+
+        <p>Macacão Yoha</p>
+        <p>R$ 99,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+      <div class="produto">
+
+        <img
+          src="https://vivayoha.com.br/cdn/shop/files/macb4.png?v=1758285347&width=400"
+          alt="Macaquinho Yoha"
+        >
+
+        <p>Macaquinho Yoha</p>
+        <p>R$ 99,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Azul">Azul</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+     
+
+      <div class="produto">
+
+        <img
+          src="https://vivayoha.com.br/cdn/shop/files/IMG_5564.jpg?v=1774670394&width=400"
+          alt="Conjunto Yoha"
+        >
+
+        <p>Conjunto Yoha</p>
+        <p>R$ 99,90</p>
+
+        <div class="opcoes">
+
+          <label>Nome:</label>
+          <input type="text" class="nome" placeholder="Digite seu nome">
+
+          <label>Tamanho:</label>
+
+          <select class="tamanho">
+            <option value="">Selecione...</option>
+            <option value="PP">PP</option>
+            <option value="P">P</option>
+            <option value="M">M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+          </select>
+
+          <label>Cor:</label>
+
+          <select class="cor">
+            <option value="">Selecione...</option>
+            <option value="Preto">Preto</option>
+            <option value="Branco">Branco</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Azul">Azul</option>
+          </select>
+
+        </div>
+
+        <div class="quantidade">
+
+          <h3>Quantidade</h3>
+
+          <h2 class="numero">0</h2>
+
+          <button onclick="aumentar(this)">Aumentar</button>
+          <button onclick="diminuir(this)">Diminuir</button>
+
+          <br>
+
+          <button class="confirmar" onclick="confirmar(this)">
+            Confirmar
+          </button>
+
+        </div>
+
+        <div class="resultado-produto"></div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTATO -->
+
+  <section id="contato">
+
+    <h2>Contato</h2>
+
+    <p>
+
+      Contato:
+
+      <a
+        href="https://wa.me/5531980156299"
+        target="_blank"
+      >
+        Fale conosco
+      </a>
+
+    </p>
+
+    <p>
+
+      Endereço:
+
+      <a
+        href="https://maps.app.goo.gl/DY1M2PfNSY8aA8e46"
+        target="_blank"
+      >
+        Acesse nossa localização
+      </a>
+
+    </p>
+
+    <p>
+
+      Email:
+
+      <a
+        href="mailto:nexfit@gmail.com?subject=Interesse+em+produtos"
+      >
+        nexfit@gmail.com
+      </a>
+
+    </p>
+
+    <br>
+
+    <h2>Ouvidoria</h2>
+
+    <form action="#" method="post">
+
+      <label for="nome">Nome Completo:</label>
+
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite seu nome"
+        required
+      >
+
+      <br><br>
+
+      <label for="email">Email:</label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Digite seu email"
+        required
+      >
+
+      <br><br>
+
+      <label for="mensagem">Mensagem:</label>
+
+      <input
+        type="text"
+        id="mensagem"
+        name="mensagem"
+        placeholder="Digite sua mensagem"
+        required
+      >
+
+      <br><br>
+
+      <button type="submit">
+        Enviar
+      </button>
+
+    </form>
+
+  </section>
+<body style="background-image: url('https://img.magnific.com/vetores-gratis/fundo-abstrato-de-formas-brancas_79603-1362.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+
+
+  <footer>
+
+    <p>
+      &copy; 2025 NexFit | 45.669.587/7855-40 -
+      Todos os direitos reservados.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+  
+    function aumentar(botao) {
+
+      let produto = botao.closest(".produto");
+
+      let numero = produto.querySelector(".numero");
+
+      let valor = Number(numero.textContent);
+
+      valor++;
+
+      numero.textContent = valor;
+
+    }
+
+
+   
+
+    function diminuir(botao) {
+
+      let produto = botao.closest(".produto");
+
+      let numero = produto.querySelector(".numero");
+
+      let valor = Number(numero.textContent);
+
+      if (valor > 0) {
+
+        valor--;
+
+      }
+
+      numero.textContent = valor;
+
+    }
+
+
+    
+
+    function confirmar(botao) {
+
+      let produto = botao.closest(".produto");
+
+
+      // Nome do produto
+
+      let nomeProduto =
+        produto.querySelector("p").textContent;
+
+
+      // Nome do cliente
+
+      let nomeCliente =
+        produto.querySelector(".nome").value.trim();
+
+
+      // Preço
+
+      let precoTexto =
+        produto.querySelector("p:nth-of-type(2)").textContent;
+
+
+      let preco =
+        parseFloat(
+          precoTexto
+            .replace("R$", "")
+            .replace(".", "")
+            .replace(",", ".")
+            .trim()
+        );
+
+
+      // Tamanho
+
+      let tamanho =
+        produto.querySelector(".tamanho").value;
+
+
+      // Cor
+
+      let cor =
+        produto.querySelector(".cor").value;
+
+
+      // Quantidade
+
+      let quantidade =
+        Number(
+          produto.querySelector(".numero").textContent
+        );
+
+
+      
+
+      if (nomeCliente === "") {
+
+        alert("Por favor, digite seu nome.");
+
+        return;
+
+      }
+
+
+
+
+      if (tamanho === "") {
+
+        alert(
+          "Por favor, selecione o tamanho do produto."
+        );
+
+        return;
+
+      }
+
+
+      
+
+      if (cor === "") {
+
+        alert(
+          "Por favor, selecione a cor do produto."
+        );
+
+        return;
+
+      }
+
+
+      if (quantidade === 0) {
+
+        alert(
+          "Insira uma quantidade antes de confirmar."
+        );
+
+        return;
+
+      }
+
+
+      
+      let total = preco * quantidade;
+
+
+      let totalFormatado =
+        total.toLocaleString(
+          "pt-BR",
+          {
+            style: "currency",
+            currency: "BRL"
+          }
+        );
+
+
+   
+
+      let resultado =
+        produto.querySelector(".resultado-produto");
+
+
+      resultado.innerHTML =
+
+        "<strong>✅ Produto confirmado!</strong><br><br>" +
+
+        "👤 <strong>Nome:</strong> " +
+        nomeCliente +
+        "<br>" +
+
+        "👕 <strong>Produto:</strong> " +
+        nomeProduto +
+        "<br>" +
+
+        "📏 <strong>Tamanho:</strong> " +
+        tamanho +
+        "<br>" +
+
+        "🎨 <strong>Cor:</strong> " +
+        cor +
+        "<br>" +
+
+        "🔢 <strong>Quantidade:</strong> " +
+        quantidade +
+        "<br>" +
+
+        "💰 <strong>Valor unitário:</strong> " +
+
+        preco.toLocaleString(
+          "pt-BR",
+          {
+            style: "currency",
+            currency: "BRL"
+          }
+        ) +
+
+        "<br>" +
+
+        "💵 <strong>Total: " +
+        totalFormatado +
+        "</strong><br><br>" +
+
+        "Produto adicionado ao pedido!";
+
+
+      resultado.style.display = "block";
+
+
+      
+      resultado.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
